@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+<!-- Maven:Maven是一站式的项目管理工具，负责项目构建、打包、测试、发布等
+    知识点一：了解坐标的作用
+    maven项目标识  组Id/项目名称/版本号 称之为maven坐标
+    1.maven中管理的jar包文件众多，如何有效管理呢？ 答：采用坐标的形式
+    2.在本地仓库中 jar包位置就是坐标的位置，maven工作通过坐标查找执行的jar
+
+    知识点二：maven中的jar包文件具有依赖的传递性
+    例子：   A.jar ~~~ B.jar ~~~ C.jar
+    maven:jar包的传递性如何实现？
+-->
+    <groupId>com.jt</groupId>
+    <artifactId>springboot_demo1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springboot_demo1</name>
+    <description>Demo project for Spring Boot</description>
+
+<!--作用1：parent标签  集中定义了SpringBoot所有依赖jar包的版本信息。
+    作用2：
+-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+
+        <skipTests>true</skipTests>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

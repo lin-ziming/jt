@@ -1,12 +1,16 @@
 package com.jt;
 
+import com.jt.service.TestService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest //
+@SpringBootTest ////将整个测试类交给spring容器管理
 class SpringbootDemo1ApplicationTests {
 
-    //在测试
+    //在测试类中可以直接注入spring容器中的任意对象进行测试
+    @Autowired
+    private TestService testService;
 
     @Test
     void contextLoads() {

@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-<!-- Maven:Maven是一站式的项目管理工具，负责项目构建、打包、测试、发布等
+<!-- Maven:Maven是一站式的项目管理工具，负责项目构建、打包、测试、发布等工作.   xxx.jar/xxx.war
     知识点一：了解坐标的作用
     maven项目标识  组Id/项目名称/版本号 称之为maven坐标
     1.maven中管理的jar包文件众多，如何有效管理呢？ 答：采用坐标的形式
@@ -19,9 +19,11 @@
     <name>springboot_demo1</name>
     <description>Demo project for Spring Boot</description>
 
-<!--作用1：parent标签  集中定义了SpringBoot所有依赖jar包的版本信息。
-    作用2：
--->
+<!--
+        作用1: parent标签 集中定义了SpringBoot所有依赖jar包的版本信息.
+               由官网解决了jar包冲突性问题.
+        作用2: 本地仓库中没有该文件的jar包 parent表示的是一个聚合工程POM(定义).
+    -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -29,14 +31,25 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-
+    <!--maven项目配置信息-->
     <properties>
+        <!--指定了jdk版本信息-->
         <java.version>1.8</java.version>
-
+        <!--
+            跳过测试类打包
+            默认条件下程序打包会执行测试了类 如果测试类有问题,则程序打包失败.
+        -->
         <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
+        <!--
+			手动依赖项 该依赖项被springBoot进行了高度的整合
+			springBoot帮助大家动态的生成了配置项目,简化了配置的步骤
+			该配置称之为自动化的配置信息
+			spring-boot-starter springBoot自动化的启动项.
+			开箱即用: 只需要导入jar包简单的配置即可实现对应的功能.
+		-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -59,9 +72,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-
     </dependencies>
 
+    <!--
+        SpringBoot利用maven管理工具进行项目打包/发布/等操作
+        该标签必须添加
+    -->
     <build>
         <plugins>
             <plugin>

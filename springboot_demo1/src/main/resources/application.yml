@@ -1,0 +1,26 @@
+# 该配置文件，当spring容器启动时加载
+spring:
+  profiles:
+    active: prod
+
+# 环境分割线
+---
+#定义开发环境
+spring:
+  profiles: prod
+
+server:
+  port: 8080
+
+---
+# 该配置文件,当spring容器启动时加载.
+spring:
+  profiles: prod
+
+server:
+  port: 8090
+
+#配置redis节点信息
+redis:
+  host: 192.168.1.100
+  port: 6379

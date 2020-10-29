@@ -53,6 +53,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--支持热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

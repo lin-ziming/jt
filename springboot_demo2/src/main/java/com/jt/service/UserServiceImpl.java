@@ -12,8 +12,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
     @Override
     public List<User> findAll() {
-        return userMapper.findAll();
+//        return userMapper.findAll() ;
+        return userMapper.selectList(null);
     }
 }

@@ -9,7 +9,7 @@ public class RedisController {
     private String host = "127.0.0.1";
     private Integer port = 6379;
 
-    @RequestMapping("addUser")
+    @RequestMapping("/index")
     public String index(){
         return "index";
     }

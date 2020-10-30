@@ -24,3 +24,11 @@ server:
 redis:
   host: 192.168.1.100
   port: 6379
+
+---
+#视图解析器的配置项
+spring:
+  mvc:      #视图解析器的配置项
+    view:
+      prefix: templates/user/
+      suffix: .html

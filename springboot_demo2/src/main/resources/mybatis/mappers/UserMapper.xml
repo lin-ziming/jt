@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:一般与接口的路径一致-->
+<mapper namespace="com.jt.mapper.UserMapper">
+
+	<!--<select id="findAll" resultType="User">
+		select * from user
+	</select>-->
+
+	<!--
+		业务需求:
+			要求实现数据库的查询,但是数据库表字段与对象的属性不一致.
+		eg:
+			user表(字段 user_id,user_name,user_age......)
+			User对象(属性 userId,userName,userAge)
+		说明: 引入驼峰映射规则.
+		执行顺序: 1获取user_id~~~~去掉多余的"_"字母大写 ~~~~userId
+				 实现数据的映射.
+		注意事项: 如果使用驼峰规则映射则必须满足规范..
+	-->
+	<!--<select id="find" resultType="" resultMap="手动封装"></select>-->
+
+</mapper>

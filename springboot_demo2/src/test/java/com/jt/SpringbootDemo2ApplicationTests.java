@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,14 +30,16 @@ class SpringbootDemo2ApplicationTests {
 
     /**
      * 需求：查询年龄=18用户，同时要求性别为女
-     * 条件构造器的作用：用来拼接where条件
-     * sql： xxx  where age=18 and sex="女"
+     * queryWrapper条件构造器的作用：用来拼接where条件
+     * sql： xxx  where age>18 and age<2000 or sex="女"
      * 逻辑运算符：=eq,  >gt,  <lt,  >=ge,  <=le
      */
     @Test
     public void select02(){
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("age", 18)
+        queryWrapper.gt("age", 18)
+                    .lt("age",2000)
+                    .or()
                     .eq("sex", "女");
         List<User> userList = userMapper.selectList(queryWrapper);
         System.out.println(userList);
@@ -46,6 +47,7 @@ class SpringbootDemo2ApplicationTests {
 
     /**
      * 查询ID=1, 3, 5, 6 的数据
+     * 单表查询: or in，单表查询or和in性能差不多
      * sql:select * from user where id in (1,3,5,6);
      */
     @Test
@@ -56,8 +58,8 @@ class SpringbootDemo2ApplicationTests {
         System.out.println(userList);
 
         //如果需要获取表中的第一列主键信息
-
-
+        List<Object> list = userMapper.selectObjs(null);
+        System.out.println(list);
     }
 
     /**
@@ -72,7 +74,8 @@ class SpringbootDemo2ApplicationTests {
     /**
      * 更新操作
      * 老师建议：但凡写更新操作时，最好自己手写
-     * 需求： 需要将name="名媛" 改为 "北京大爷"
+     * 需求： 需要将id=65的用户name="名媛" 改为  "北京大爷"
+     * 		用户name="名媛" 改为  "北京大爷"
      */
     @Test
     public void testUpdate(){
@@ -81,11 +84,11 @@ class SpringbootDemo2ApplicationTests {
 //        user.setId(65).setName("北京大爷");
 //        userMapper.updateById(user);
 
-        //1.参数1: 需要修改的数据    参数2:修改的where条件
         User user = new User();
         user.setName("北京大爷");
         UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("name", "名媛");
+        //1.参数1: 需要修改的数据    参数2:修改的where条件
         userMapper.update(user,updateWrapper);
 
     }

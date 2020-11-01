@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="web项目的入门案例" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="springboot_demo3" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.jt.SpringBootRun" />
+    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/springboot_demo3" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

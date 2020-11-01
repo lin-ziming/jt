@@ -10,8 +10,10 @@ spring:
     username: root
     password: root
 
-mybatis:
+mybatis-plus:
+  #别名包定义 Mapper的resultType中只需要写类名 之后自动拼接即可
   type-aliases-package: com.jt.pojo
+  #加载指定的xml映射文件
   mapper-locations: classpath:/mybatis/mappers/*.xml
   #开启驼峰映射
   configuration:

@@ -1,0 +1,33 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    #驱动版本问题 高版本需要添加cj关键字  一般可以省略
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jtdb?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: root
+
+  mvc:         #引入mvn配置
+    view:
+      prefix: /WEB-INF/     # /默认代表根目录 src/main/webapp
+      suffix: .jsp
+
+
+
+mybatis-plus:
+  #别名包定义 Mapper的resultType中只需要写类名 之后自动拼接即可
+  type-aliases-package: com.jt.pojo
+  #加载指定的xml映射文件
+  mapper-locations: classpath:/mybatis/mappers/*.xml
+  #开启驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+# 实现sql打印
+logging:
+  level:
+    com.jt.mapper: debug

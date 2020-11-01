@@ -7,7 +7,7 @@ spring:
 ---
 #定义开发环境
 spring:
-  profiles:
+  profiles: dev
 
 server:
   port: 8080

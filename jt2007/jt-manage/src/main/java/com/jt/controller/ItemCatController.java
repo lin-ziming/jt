@@ -25,7 +25,12 @@ public class ItemCatController {
 
         return itemCatService.findItemCatById(itemCatId);
     }
-
+    /**
+     * 业务: 实现商品分类的查询
+     * url地址: /item/cat/list
+     * 参数:   id: 默认应该0 否则就是用户的ID
+     * 返回值结果: List<EasyUITree>
+     */
     @RequestMapping("/list")
     public List<EasyUITree> findItemCatList(Long id){
         Long parentId = (id==null) ? 0 : id;

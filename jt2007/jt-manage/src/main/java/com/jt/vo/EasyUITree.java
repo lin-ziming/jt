@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class EasyUITree implements Serializable {
     private static final long serialVersionUID = -6430564299899005614L;
-    private Long id;
-    private String text;
-    private String state;
+    private Long id;        //节点ID
+    private String text;    //节点名称
+    private String state;   //节点状态
 }

@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/jt2007/jt-manage" />
     <file type="web" url="file://$PROJECT_DIR$/springboot_demo3" />
   </component>
   <component name="JavaScriptSettings">
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/springboot_demo2/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_demo3/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_demo1/pom.xml" />
+        <option value="$PROJECT_DIR$/jt2007/pom.xml" />
       </list>
     </option>
   </component>

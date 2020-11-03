@@ -19,7 +19,7 @@
 				2. $.post(.....)
 				3. $.getJSON(.....)
 		 */
-		$.get("/findAjax",function(result){
+		$.get("/findAjax2",function(result){
 			//1.可以使用js中的for循环
 			/* for(let i=0; i<result.length;i++){
 				
@@ -44,7 +44,41 @@
 						"</td></tr>";
 				$("#tab1").append(tr);
 			}
-		})
+		});
+		/*
+			原生ajax写法   $.ajax变形 jQuery的编程特点: 函数式编程
+			需求:传递Id=100,name=喵
+			参数写法1:data : {"id":100,"name":"喵"}
+			参数写法2:data: "id=100&name=喵",
+		*/
+		$.ajax({
+			url : "findAjax",
+			type : "GET",
+			success: function (result) {
+				// debugger;
+				for (let user of result) {
+					let id = user.id;
+					let name = user.name;
+					let age = user.age;
+					let sex = user.sex;
+					let tr = "<tr align='center'><td>" +
+							id +
+							"</td><td>" +
+							name +
+							"</td><td>" +
+							age +
+							"</td><td>" +
+							sex +
+							"</td></tr>";
+					$("#tab1").append(tr);
+				}
+			},
+			error: function (result) {
+				alert("请求失败，请联系管理员！")
+			},
+			cache : false,   //默认为 true
+			async : false    //默认为 true
+		});
 	})
 </script>
 

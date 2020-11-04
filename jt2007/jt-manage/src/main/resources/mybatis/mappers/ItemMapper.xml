@@ -4,8 +4,44 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jt.mapper.ItemMapper">
 	<!--留着以后用  -->
-	<!--<select id="findItemByPage" resultType="com.jt.pojo.Item">
-		/*先排序再分页*/
-		select * from tb_item order by updated desc limit #{startIndex},#{rows}
-	</select>-->
+	<!--
+		Mybatis数据传参的原理:
+			规则: Mybatis只能接收单值传参!!!
+				 如果有多个数据需要传值,则需要将多值封装为单值
+			方式:
+				1.利用对象传参
+				2.利用数组传参
+				3.利用Map集合传参
+			集合的写法:
+				数据类型是数组  		collection="array"
+				数据类型是list集合    collection="list"
+				数据类型是Map集合     collection="map的key"
+
+		ids=100,101,102
+		collection: 获取传递集合的key
+		open="集合遍历前缀"
+		close="集合遍历后缀"
+		separator="分隔符"
+		item="当前遍历的对象"
+	-->
+	<delete id="deleteItems">
+		<!--delete from tb_item where id in
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>-->
+		/*上面的写法较繁琐，这样的写法更简单*/
+		delete from tb_item where id in (
+		<foreach collection="array" item="id" separator=",">
+				#{id}
+		</foreach>
+		)
+	</delete>
+
+	<update id="updateStatus">
+		update tb_item set status=#{status} where id in (
+		<foreach collection="ids" item="id" separator=",">
+			#{id}
+		</foreach>
+		)
+	</update>
 </mapper>

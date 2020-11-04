@@ -1,6 +1,7 @@
 package com.jt.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jt.pojo.Item;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.jt.mapper.ItemMapper;
 
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -50,4 +53,49 @@ public class ItemServiceImpl implements ItemService {
 		return new EasyUITable(iPage.getTotal(), iPage.getRecords());
 	}
 
+	@Override
+	public void saveItem(Item item) {
+//		item.setStatus(1).setCreated(new Date()).setUpdated(item.getCreated());
+		item.setStatus(1);
+		itemMapper.insert(item);
+	}
+
+	/**
+	 * 一般更新操作都是根据主键更新
+	 * Sql: update tb_item set titel=#{xxx},x,x where id=#{xxx}
+	 * @param item
+	 */
+	@Override
+	public void updateItem(Item item) {
+		//根据对象中不为null的元素充当set条件
+		itemMapper.updateById(item);
+	}
+
+	@Override
+	public void deleteItems(Long[] ids) {
+//		List<Long> idsList = Arrays.asList(ids);
+//		itemMapper.deleteBatchIds(idsList);
+
+		//手动删除数据
+		itemMapper.deleteItems(ids);
+	}
+	/**
+	 * 参数说明:  entity:修改数据的值   updateWrapper
+	 */
+	@Override
+	public void updateStatus(Long[] ids, Integer status) {
+		Item item = new Item();
+		item.setStatus(status);
+		//where id in (1,2,3,4)
+		UpdateWrapper<Item> updateWrapper = new UpdateWrapper<>();
+		updateWrapper.in("id", Arrays.asList(ids));
+		itemMapper.update(item,updateWrapper);
+	}
+	/**
+	 * //作业:sql手动完成
+	 */
+	@Override
+	public void updateStatus2(Long[] ids, Integer status) {
+		itemMapper.updateStatus(status, ids);
+	}
 }

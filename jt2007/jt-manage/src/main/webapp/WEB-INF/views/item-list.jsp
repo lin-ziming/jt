@@ -54,12 +54,13 @@
         		$.messager.alert('提示','只能选择一个商品!');
         		return ;
         	}
-        	
+            //需要找到一个空的div之后展现窗口
         	$("#itemEditWindow").window({
         		onLoad :function(){
         			//回显数据
         			var data = $("#itemList").datagrid("getSelections")[0];
         			data.priceView = KindEditorUtil.formatPrice(data.price);
+                    //将data的数据回显到修改页面中.
         			$("#itemeEditForm").form("load",data);
         			
         			// 加载商品描述
@@ -98,6 +99,17 @@
         					 $("#itemeEditForm .params td").eq(1).html(html);
         				}
         			});
+
+        			 /*根据商品分类ID，获取分类名称*/
+                    let itemCatId = data.cid;
+                    $.get("/item/cat/queryItemName",{itemCatId:itemCatId},function (data) {
+                        // alert("获取的商品分类名称为："+data);
+                        //兄弟元素
+                        //$("#itemeEditForm input[name='cid']").siblings("span").text(data);
+                        //text获取文本信息   val获取value属性信息
+                        //前一个元素
+                        $("#itemeEditForm input[name='cid']").prev().text(data);
+                    })
         			
         			KindEditorUtil.init({
         				"pics" : data.image,
@@ -146,7 +158,7 @@
         	$.messager.confirm('确认','确定下架ID为 '+ids+' 的商品吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
-                	$.post("/item/instock",params, function(data){
+                	$.post("/item/updateStatus/2",params, function(data){
             			if(data.status == 200){
             				$.messager.alert('提示','下架商品成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
@@ -168,7 +180,7 @@
         	$.messager.confirm('确认','确定上架ID为 '+ids+' 的商品吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
-                	$.post("/item/reshelf",params, function(data){
+                	$.post("/item/updateStatus/1",params, function(data){
             			if(data.status == 200){
             				$.messager.alert('提示','上架商品成功!',undefined,function(){
             					$("#itemList").datagrid("reload");

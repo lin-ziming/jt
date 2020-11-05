@@ -1,9 +1,11 @@
 package com.jt.controller;
 
 import com.jt.pojo.Item;
+import com.jt.pojo.ItemDesc;
 import com.jt.vo.EasyUITable;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +42,9 @@ public class ItemController {
 	 * 		3.返回值： 系统级别的VO对象
 	 */
 	@RequestMapping("/item/save")
-	public SysResult saveItem(Item item){
-		itemService.saveItem(item);
+	@Transactional  //控制事务
+	public SysResult saveItem(Item item, ItemDesc itemDesc){
+		itemService.saveItem(item,itemDesc);
 		return SysResult.success();
 	}
 
@@ -54,8 +57,8 @@ public class ItemController {
 	 * @return
 	 */
 	@RequestMapping("/item/update")
-	public SysResult updateItem(Item item){
-		itemService.updateItem(item);
+	public SysResult updateItem(Item item,ItemDesc itemDesc){
+		itemService.updateItem(item,itemDesc);
 		return SysResult.success();
 	}
 
@@ -83,5 +86,16 @@ public class ItemController {
 //		itemService.updateStatus(ids,status);
 		itemService.updateStatus2(ids,status);
 		return SysResult.success();
+	}
+	/**
+	 * 需求: 根据商品Id,查询商品的详情信息.
+	 * url地址: http://localhost:8091/item/query/item/desc/1474392019
+	 * 参数:    商品Id号
+	 * 返回值:  SysResult对象
+	 */
+	@RequestMapping("/item/query/item/desc/{itemId}")
+	public SysResult findItemDescById(@PathVariable Long itemId){
+		ItemDesc itemDesc = itemService.findItemDescById(itemId);
+		return SysResult.success(itemDesc);
 	}
 }

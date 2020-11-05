@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8091
   servlet:
     context-path: /    #在根目录中发布  缺省值.
 spring:

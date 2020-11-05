@@ -38,10 +38,15 @@
 	</delete>
 
 	<update id="updateStatus">
-		update tb_item set status=#{status} where id in (
+		update tb_item set status=#{status},updated=now() where id in (
 		<foreach collection="ids" item="id" separator=",">
 			#{id}
 		</foreach>
 		)
 	</update>
+
+	<!--实现主键自增的回显-->
+	<!--<insert id="" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+
+	</insert>-->
 </mapper>

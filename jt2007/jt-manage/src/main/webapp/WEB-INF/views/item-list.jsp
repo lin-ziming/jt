@@ -68,6 +68,7 @@
         			$.getJSON('/item/query/item/desc/'+data.id,function(_data){
         				if(_data.status == 200){
         					//UM.getEditor('itemeEditDescEditor').setContent(_data.data.itemDesc, false);
+                            console.log(_data.data);
         					itemEditEditor.html(_data.data.itemDesc);
         				}
         			});

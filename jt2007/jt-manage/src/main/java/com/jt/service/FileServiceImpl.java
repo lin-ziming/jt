@@ -1,6 +1,8 @@
 package com.jt.service;
 
 import com.jt.vo.ImageVO;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,9 +17,13 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service
+@PropertySource("classpath:/properties/image.properties")//读取指定的配置文件
 public class FileServiceImpl implements FileService {
     //定义文件存储的根目录
-    private String fileLocalDir = "d:/JT-SOFT/images";
+    @Value("${image.fileLocalDir}")
+    private String fileLocalDir; //= "d:/JT-SOFT/images";
+    @Value("${image.urlPath}")
+    private String urlPath; //= "http://image.jt.com";
     private static Set<String> typeSet = new HashSet<>();
     static {
         typeSet.add(".jpg");
@@ -46,6 +52,7 @@ public class FileServiceImpl implements FileService {
         }
         //问题2：防止恶意程序攻击，图片有宽度和高度
         try {
+            //获取图片对象类型
             BufferedImage bufferedImage = ImageIO.read(uploadFile.getInputStream());
             int width = bufferedImage.getWidth();
             int height = bufferedImage.getHeight();
@@ -74,7 +81,9 @@ public class FileServiceImpl implements FileService {
             uploadFile.transferTo(realFile);
 
             //如果程序一切正常
-            String url = "//img14.360buyimg.com/n1/jfs/t1/139289/19/2161/71101/5efff028E5f8e52f1/bf82189580832a4f.jpg";
+            //磁盘地址：D:\JT-SOFT\images + dateDir + realFileName;
+//            String url = "//img14.360buyimg.com/n1/jfs/t1/139289/19/2161/71101/5efff028E5f8e52f1/bf82189580832a4f.jpg";
+            String url = urlPath + dateDir + realFileName;
             return ImageVO.success(url,width,height);
         } catch (IOException e) {
             //将检查异常，转化为运行时异常

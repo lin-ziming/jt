@@ -2,7 +2,12 @@ package com.jt;
 
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Transaction;
 import redis.clients.jedis.params.SetParams;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class TestRedis {
     /**
@@ -76,4 +81,35 @@ public class TestRedis {
         jedis.set("2007","aaa",setParams);
         System.out.println(jedis.get("2007"));
     }
+    @Test
+    public void testHash() throws InterruptedException {
+        Jedis jedis = new Jedis("192.168.126.129",6379);
+        jedis.hset("person", "id","18");
+        jedis.hset("person", "name","hash测试");
+        jedis.hset("person", "age","2");
+        Map<String, String> map = jedis.hgetAll("person");
+        Set<String> set = jedis.hkeys("person");  //获取所有key
+        List<String> list = jedis.hvals("person");
+    }
+    @Test
+    public void testList() {
+        Jedis jedis = new Jedis("192.168.126.129",6379);
+        jedis.lpush("list", "1","2","3","4");
+        System.out.println(jedis.rpop("list"));
+    }
+    @Test
+    public void testTx(){
+        Jedis jedis = new Jedis("192.168.126.129",6379);
+        //1.开启事务
+        Transaction transaction = jedis.multi();
+        try {
+            transaction.set("a","a");
+            transaction.set("b","b");
+            transaction.set("c","c");
+            transaction.exec(); //提交事务
+        }catch (Exception e){
+            transaction.discard();
+        }
+    }
+
 }

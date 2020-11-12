@@ -3,6 +3,7 @@ package com.jt.controller;
 import com.jt.service.ItemCatService;
 import com.jt.vo.EasyUITree;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,11 @@ import java.util.List;
 public class ItemCatController {
 
     @Autowired
+    /**
+     * @Qualifier("itemCatServiceImpl") 指定bean进行注入
+     * 根据接口的类型进行注入 当前接口的实现类.
+     * 核心机制: Spring管理对象都是单实现
+     */
     private ItemCatService itemCatService;
     /**
      * 业务：根据商品分类的ID，查询商品分类的名称
@@ -35,6 +41,7 @@ public class ItemCatController {
     public List<EasyUITree> findItemCatList(Long id){
         Long parentId = (id==null) ? 0 : id;
         return itemCatService.findItemCatList(parentId);
+//        return itemCatService.findItemCatCache(parentId);
     }
 
 }

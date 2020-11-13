@@ -2,9 +2,12 @@ package com.jt;
 
 import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisShardInfo;
+import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.Transaction;
 import redis.clients.jedis.params.SetParams;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -110,6 +113,16 @@ public class TestRedis {
         }catch (Exception e){
             transaction.discard();
         }
+    }
+    @Test
+    public void testShards(){
+        List<JedisShardInfo> shards = new ArrayList<>();
+        shards.add(new JedisShardInfo("192.168.126.129",6379));
+        shards.add(new JedisShardInfo("192.168.126.129",6380));
+        shards.add(new JedisShardInfo("192.168.126.129",6381));
+        ShardedJedis shardedJedis = new ShardedJedis(shards);
+        shardedJedis.set("shards","redis分片操作！！！");
+        System.out.println(shardedJedis.get("shards"));
     }
 
 }

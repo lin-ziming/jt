@@ -6,11 +6,9 @@ import com.jt.util.ObjectMapperUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.ShardedJedis;
 
 import java.util.Arrays;
@@ -51,6 +49,7 @@ public class CacheAOP {
             MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
             //2.获取返回值类型
             Class returnType = methodSignature.getReturnType();
+            //returnType不要写Object，因为容易翻车！！！
             result = ObjectMapperUtil.toObject(json,returnType);
             System.out.println("AOP查询redis缓存!!!");
         }else{
@@ -68,13 +67,37 @@ public class CacheAOP {
         return result;
     }
 
-//    @Around("@annotation(com.jt.anno.CacheFind)")
-//    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-//        System.out.println("环绕开始前");
-//        Object object = joinPoint.proceed();
-//        System.out.println("环绕开始后");
-//        return object;
-//    }
+/*    @Around("@annotation(com.jt.anno.CacheFind)")
+    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+        //1.获取目标对象的Class类型
+        Class targetClass = joinPoint.getTarget().getClass();
+        //2.获取目标方法名称
+        String methodName = joinPoint.getSignature().getName();
+        //3.获取参数类型
+        Object[] argsObj = joinPoint.getArgs();
+        Class[]  argsClass = null;
+        //4.对象转化为class类型
+        if(argsObj.length>0){
+            argsClass = new Class[argsObj.length];
+            for(int i=0;i<argsObj.length;i++){
+                argsClass[i] = argsObj[i].getClass();
+            }
+        }
+        //3.获取方法对象
+        Method targetMethod = targetClass.getMethod(methodName,argsClass);
 
+        //4.获取方法上的注解
+        if(targetMethod.isAnnotationPresent(CacheFind.class)){
+            CacheFind cacheFind = targetMethod.getAnnotation(CacheFind.class);
+            String key = cacheFind.preKey() + "::"
+                    +Arrays.toString(joinPoint.getArgs());
+            System.out.println(key);
+        }
+
+        Object object = joinPoint.proceed();
+        System.out.println("环绕开始后");
+        return object;
+    }
+*/
 
 }

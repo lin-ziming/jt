@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
 
@@ -31,7 +30,9 @@ public class RedisConfig {
         }
         return new ShardedJedis(shards);
     }
-
+/**
+ * 单台redis
+ */
 //    @Value("${redis.host}")
 //    private String host;
 //    @Value("${redis.port}")

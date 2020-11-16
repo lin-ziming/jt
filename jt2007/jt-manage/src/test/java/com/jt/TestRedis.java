@@ -1,16 +1,10 @@
 package com.jt;
 
 import org.junit.jupiter.api.Test;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisShardInfo;
-import redis.clients.jedis.ShardedJedis;
-import redis.clients.jedis.Transaction;
+import redis.clients.jedis.*;
 import redis.clients.jedis.params.SetParams;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class TestRedis {
     /**
@@ -123,6 +117,20 @@ public class TestRedis {
         ShardedJedis shardedJedis = new ShardedJedis(shards);
         shardedJedis.set("shards","redis分片操作！！！");
         System.out.println(shardedJedis.get("shards"));
+    }
+
+    @Test
+    public void testCluster(){
+        Set<HostAndPort> sets = new HashSet<>();
+        sets.add(new HostAndPort("192.168.126.129",7000));
+        sets.add(new HostAndPort("192.168.126.129",7001));
+        sets.add(new HostAndPort("192.168.126.129",7002));
+        sets.add(new HostAndPort("192.168.126.129",7003));
+        sets.add(new HostAndPort("192.168.126.129",7004));
+        sets.add(new HostAndPort("192.168.126.129",7005));
+        JedisCluster jedisCluster = new JedisCluster(sets);
+        jedisCluster.set("jedis", "集群赋值");
+        System.out.println(jedisCluster.get("jedis"));
     }
 
 }

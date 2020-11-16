@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringBootRun" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <module name="jt-web" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.jt.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.jt.SpringBootRun" />
+    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/jt2007/jt-web" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

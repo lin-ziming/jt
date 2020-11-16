@@ -10,6 +10,7 @@
         <module name="demo" />
         <module name="springboot_demo" />
         <module name="jt-common" />
+        <module name="jt-web" />
         <module name="springboot_demo3" />
         <module name="springboot_demo2" />
         <module name="springboot_demo1" />
@@ -20,6 +21,7 @@
       <module name="demo" target="1.8" />
       <module name="jt-common" target="1.8" />
       <module name="jt-manage" target="1.8" />
+      <module name="jt-web" target="1.8" />
       <module name="jt2007" target="1.8" />
       <module name="springboot_demo" target="1.8" />
       <module name="springboot_demo1" target="1.8" />
@@ -32,6 +34,7 @@
       <module name="demo" options="-parameters" />
       <module name="jt-common" options="-parameters" />
       <module name="jt-manage" options="-parameters" />
+      <module name="jt-web" options="-parameters" />
       <module name="springboot_demo" options="-parameters" />
       <module name="springboot_demo1" options="-parameters" />
       <module name="springboot_demo2" options="-parameters" />

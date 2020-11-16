@@ -5,6 +5,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/jt2007/jt-manage" />
+    <file type="web" url="file://$PROJECT_DIR$/jt2007/jt-web" />
     <file type="web" url="file://$PROJECT_DIR$/springboot_demo3" />
   </component>
   <component name="JavaScriptSettings">

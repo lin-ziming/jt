@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="SpringBootRun" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-    <module name="jt-web" />
+  <configuration default="false" name="京淘单点登录系统" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="jt-sso" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.jt.*" />
@@ -8,7 +8,6 @@
       </pattern>
     </extension>
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.jt.SpringBootRun" />
-    <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/jt2007/jt-web" />
     <option name="ALTERNATIVE_JRE_PATH" />
     <method v="2">
       <option name="Make" enabled="true" />

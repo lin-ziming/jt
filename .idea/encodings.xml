@@ -3,9 +3,8 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/jt2007/jt-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jt2007/jt-manage/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jt2007/jt-sso/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jt2007/jt-web/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/jt2007/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/jt2007/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_demo1/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_demo2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_demo3/src/main/java" charset="UTF-8" />

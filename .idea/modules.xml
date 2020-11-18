@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/jt.iml" filepath="$PROJECT_DIR$/.idea/jt.iml" />
       <module fileurl="file://$PROJECT_DIR$/jt2007/jt-common/jt-common.iml" filepath="$PROJECT_DIR$/jt2007/jt-common/jt-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/jt2007/jt-manage/jt-manage.iml" filepath="$PROJECT_DIR$/jt2007/jt-manage/jt-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jt2007/jt-sso/jt-sso.iml" filepath="$PROJECT_DIR$/jt2007/jt-sso/jt-sso.iml" />
       <module fileurl="file://$PROJECT_DIR$/jt2007/jt-web/jt-web.iml" filepath="$PROJECT_DIR$/jt2007/jt-web/jt-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/jt2007/jt2007.iml" filepath="$PROJECT_DIR$/jt2007/jt2007.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_demo1/springboot_demo1.iml" filepath="$PROJECT_DIR$/springboot_demo1/springboot_demo1.iml" />

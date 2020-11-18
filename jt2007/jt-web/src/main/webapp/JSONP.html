@@ -5,7 +5,7 @@
 <title>JSONP测试</title>
 <script type="text/javascript" src="http://manage.jt.com/js/jquery-easyui-1.4.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function(){
+	$(function(){  //让页面加载完成之后再次执行
 		alert("测试访问开始!!!!!")
 		$.ajax({
 			url:"http://manage.jt.com/web/testJSONP",
@@ -14,8 +14,9 @@
 			jsonp: "callback",    //指定参数名称
 			jsonpCallback: "hello",  //指定回调函数名称
 			success:function (data){   //data经过jQuery封装返回就是json串
-				alert(data.id);
-				alert(data.name);
+				alert("获取数据："+data.itemId+"|"+data.itemDesc);
+				// alert(data.id);
+				// alert(data.name);
 				//转化为字符串使用
 				//var obj = eval("("+data+")");
 				//alert(obj.name);

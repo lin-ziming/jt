@@ -11,6 +11,7 @@
         <module>jt-common</module>
         <module>jt-manage</module>
         <module>jt-web</module>
+        <module>jt-sso</module>
     </modules>
     <!--1.设定打包方式为 聚合工程-->
     <packaging>pom</packaging>

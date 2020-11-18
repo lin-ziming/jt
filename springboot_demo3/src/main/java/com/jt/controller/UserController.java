@@ -20,7 +20,7 @@ public class UserController {
      * 跳转页面: userList.jsp
      * url:localhost:8090/findAll
      * 步骤:
-     *      1.pojo  2.mapper 3.service  4.controller
+     *      1.pojo  2.mapper 3.service  4.com.jt.controller
      *      5.YML配置前后缀
      *      6.jar包问题  3个包
      *      7.导入页面 userList.jsp

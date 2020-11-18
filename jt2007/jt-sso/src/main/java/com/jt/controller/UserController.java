@@ -44,4 +44,14 @@ public class UserController {
 //        int a = 1/0;
         return new JSONPObject(callback, sysResult);
     }
+
+    /**
+     * http://sso.jt.com/user/testHttpClient
+     * 返回List<User>
+     */
+    @RequestMapping("/testHttpClient")
+    public List<User> testHttpClient(){
+        return userService.findAll();
+    }
+
 }

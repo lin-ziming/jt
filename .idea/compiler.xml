@@ -7,19 +7,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="dubbo-jt-demo-provider2" />
+        <module name="jt-sso" />
+        <module name="jt-cart" />
         <module name="demo" />
         <module name="springboot_demo" />
-        <module name="dubbo-jt-demo-provider" />
-        <module name="jt-sso" />
-        <module name="jt-common" />
         <module name="jt-web" />
+        <module name="dubbo-jt-demo-interface" />
+        <module name="dubbo-jt-demo-provider" />
+        <module name="jt-common" />
+        <module name="jt-manage" />
         <module name="dubbo-jt-demo-consumer" />
-        <module name="dubbo-jt-demo-provider2" />
         <module name="springboot_demo3" />
         <module name="springboot_demo2" />
         <module name="springboot_demo1" />
-        <module name="jt-manage" />
-        <module name="dubbo-jt-demo-interface" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -29,6 +30,7 @@
       <module name="dubbo-jt-demo-interface" target="1.8" />
       <module name="dubbo-jt-demo-provider" target="1.8" />
       <module name="dubbo-jt-demo-provider2" target="1.8" />
+      <module name="jt-cart" target="1.8" />
       <module name="jt-common" target="1.8" />
       <module name="jt-manage" target="1.8" />
       <module name="jt-sso" target="1.8" />
@@ -47,6 +49,7 @@
       <module name="dubbo-jt-demo-interface" options="-parameters" />
       <module name="dubbo-jt-demo-provider" options="-parameters" />
       <module name="dubbo-jt-demo-provider2" options="-parameters" />
+      <module name="jt-cart" options="-parameters" />
       <module name="jt-common" options="-parameters" />
       <module name="jt-manage" options="-parameters" />
       <module name="jt-sso" options="-parameters" />

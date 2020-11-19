@@ -1,4 +1,4 @@
-package com.jt.web;
+package com.jt.web.controller;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.jt.pojo.ItemDesc;

@@ -38,6 +38,10 @@ public class UserServiceImpl implements UserService {
                     userTemp.setEmail((String)map.get("phone"));
                     userList2.add(userTemp);
                 }*/
+                userList = ObjectMapperUtil.linkedMapTypeListToObjectList(userList,User.class);
+                userList.forEach((user)->{
+                    user.setEmail(user.getPhone());
+                });
             }
         } catch (IOException e) {
             e.printStackTrace();

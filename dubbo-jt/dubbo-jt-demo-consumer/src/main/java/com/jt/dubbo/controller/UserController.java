@@ -14,9 +14,12 @@ import com.jt.dubbo.service.UserService;
 public class UserController {
 	
 	////利用dubbo的方式为接口创建代理对象 利用rpc调用
-	
-	@Reference(loadbalance="leastactive")	
-	private UserService userService; 
+	//调用远程服务就像调用自己的服务一样的简单!!!
+//	@Reference(loadbalance="random")      //随机算法
+//	@Reference(loadbalance="roundrobin")  //轮询算法
+//	@Reference(loadbalance="consistenthash")  //一致性hash算法
+	@Reference(loadbalance="leastactive") //挑选压力最小的服务器访问
+	private UserService userService;
 	
 	/**
 	 * Dubbo框架调用特点:远程RPC调用就像调用自己本地服务一样简单

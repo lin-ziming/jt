@@ -3,6 +3,9 @@ package com.jt.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ObjectMapperUtil {
     private static final ObjectMapper MAPPER = new ObjectMapper();
     /**
@@ -27,4 +30,21 @@ public class ObjectMapperUtil {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * linkHashMap转  自定义对象
+     * @param lst List<LinkHashMap>
+     * @param responseType 要转的目标类型
+     * @param <T> 类型
+     * @return 转换为目标类型后的列表
+     */
+    public static <T> List<T> linkedMapTypeListToObjectList(List<T> lst,Class<T> responseType){
+        List<T> list = new ArrayList<>();
+        for (T t : lst){
+            list.add((toObject(toJSON(t),responseType)));
+        }
+        return list;
+    }
+
+
 }

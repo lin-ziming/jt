@@ -18,6 +18,7 @@
         <module name="jt-common" />
         <module name="jt-manage" />
         <module name="dubbo-jt-demo-consumer" />
+        <module name="jt-order" />
         <module name="springboot_demo3" />
         <module name="springboot_demo2" />
         <module name="springboot_demo1" />
@@ -33,6 +34,7 @@
       <module name="jt-cart" target="1.8" />
       <module name="jt-common" target="1.8" />
       <module name="jt-manage" target="1.8" />
+      <module name="jt-order" target="1.8" />
       <module name="jt-sso" target="1.8" />
       <module name="jt-web" target="1.8" />
       <module name="jt2007" target="1.8" />
@@ -52,6 +54,7 @@
       <module name="jt-cart" options="-parameters" />
       <module name="jt-common" options="-parameters" />
       <module name="jt-manage" options="-parameters" />
+      <module name="jt-order" options="-parameters" />
       <module name="jt-sso" options="-parameters" />
       <module name="jt-web" options="-parameters" />
       <module name="springboot_demo" options="-parameters" />

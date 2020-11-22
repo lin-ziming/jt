@@ -2,12 +2,11 @@ package com.jt.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.jt.pojo.Cart;
-import com.jt.pojo.Item;
 import com.jt.pojo.User;
 import com.jt.service.DubboCartService;
+import com.jt.util.UserThreadLocal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,7 +45,7 @@ public class CartController {
     @RequestMapping("/update/num/{itemId}/{num}")
     @ResponseBody //让ajax的程序结束
     public void updateNum(Cart cart){//springmvc 针对restFul提供的功能，名称和属性名一致就行
-        Long userId = 7L;
+        Long userId = UserThreadLocal.get().getId();
         cart.setUserId(userId);
         dubboCartService.updateCartNum(cart);
     }
@@ -58,7 +57,7 @@ public class CartController {
      */
     @RequestMapping("/delete/{itemId}")
     public String deleteCart(Cart cart){
-        Long userId = 7L;
+        Long userId = UserThreadLocal.get().getId();
         cart.setUserId(userId);
         dubboCartService.deleteCart(cart);
         return "redirect:/cart/show.html";
@@ -71,7 +70,7 @@ public class CartController {
      */
     @PostMapping("/add/{itemId}")
     public String addCart(Cart cart){
-        Long userId = 7L;
+        Long userId = UserThreadLocal.get().getId();
         cart.setUserId(userId);
         dubboCartService.addCart(cart);
         return "redirect:/cart/show.html";

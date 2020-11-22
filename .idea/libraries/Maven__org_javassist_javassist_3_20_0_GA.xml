@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.javassist:javassist:3.20.0-GA">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../cgb2007/2007mavenNew/mavenRepository20200829/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../CGB2007/mavenRepository20200829/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../cgb2007/2007mavenNew/mavenRepository20200829/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../CGB2007/mavenRepository20200829/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../cgb2007/2007mavenNew/mavenRepository20200829/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../CGB2007/mavenRepository20200829/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

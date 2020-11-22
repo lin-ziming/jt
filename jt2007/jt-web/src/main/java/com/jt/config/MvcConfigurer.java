@@ -24,8 +24,7 @@ public class MvcConfigurer implements WebMvcConfigurer{
 	}
 
 	/**
-	 * 配置拦截器
-	 * @param registry
+	 * 配置拦截器策略
 	 */
 	@Autowired
 	private UserInterceptor userInterceptor;

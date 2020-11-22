@@ -53,8 +53,10 @@ public class DubboCartServiceImpl implements DubboCartService{
                     .eq("item_id",cart.getItemId());
         Cart cartDB = cartMapper.selectOne(queryWrapper);
         if(cartDB == null){
+            //第一次新增购物车
             cartMapper.insert(cart);
         }else{
+            //用户已经加购,更新数量
             int num =cartDB.getNum() + cart.getNum();
             Cart cartTemp = new Cart();
             cartTemp.setNum(num).setId(cartDB.getId());
